@@ -14,17 +14,17 @@ const App = () => {
 
   return (
     <>
-      {/* {loading ? (
+      {loading ? (
         <LoadingComp />
-      ) : ( */}
-      <>
-        <Cursor />
-        <Particles />
-        <Header />
-        <h1>hello world</h1>
-        <Footer />
-      </>
-      {/* )} */}
+      ) : (
+        <>
+          <Cursor />
+          <Particles />
+          <Header />
+          <h1>hello world</h1>
+          <Footer />
+        </>
+      )}
     </>
   )
 }

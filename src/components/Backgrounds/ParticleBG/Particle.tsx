@@ -48,7 +48,6 @@ const Particles: React.FC = () => {
       ];
 
       for (let i = 0; i < parameters.length; i++) {
-        const color = parameters[i][0] as number[];
         const size = parameters[i][1] as number;
 
         const material = new THREE.PointsMaterial({ size });
