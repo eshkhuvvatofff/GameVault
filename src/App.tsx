@@ -3,6 +3,7 @@ import LoadingComp from './components/loadingComp/loadingComp';
 import Cursor from './components/cursorAnimation/cursor';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Particles from './components/Backgrounds/ParticleBG/Particle';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -18,9 +19,10 @@ const App = () => {
       ) : ( */}
       <>
         <Cursor />
-        <Header/>
+        <Particles />
+        <Header />
         <h1>hello world</h1>
-        <Footer/>
+        <Footer />
       </>
       {/* )} */}
     </>
