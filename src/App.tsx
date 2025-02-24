@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import LoadingComp from './components/loadingComp/loadingComp';
 import Cursor from './components/cursorAnimation/cursor';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -11,14 +13,16 @@ const App = () => {
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <LoadingComp />
-      ) : (
-        <>
-          <Cursor />
-          <h1>hello world</h1>
-        </>
-      )}
+      ) : ( */}
+      <>
+        <Cursor />
+        <Header/>
+        <h1>hello world</h1>
+        <Footer/>
+      </>
+      {/* )} */}
     </>
   )
 }
