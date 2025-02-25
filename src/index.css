@@ -27,7 +27,7 @@ select {
     color: #fff;
     text-shadow: 0 0 5px rgba(255, 0, 255, 0.8), 0 0 10px rgba(255, 0, 255, 0.6);
     box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-  }
+}
 
 
 ::-webkit-scrollbar {

@@ -9,7 +9,7 @@ export const Footer = () => {
   const location = useLocation();
   if (location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/restorepassword' || location.pathname === '/reset-password') return null;
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, string>>({
     name: '',
     email: ''
   });
@@ -97,6 +97,24 @@ export const Footer = () => {
                 />
               ))}
             </div>
+            <textarea
+              name="comment"
+              placeholder="Your comment"
+              rows={3}
+              className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl 
+                text-base focus:outline-none transition-all duration-300 transform
+                placeholder:text-gray-500
+                shadow-[0_0_0_0_rgba(56,189,248,0.3)]
+                focus:shadow-[0_0_20px_0_rgba(56,189,248,0.5)]
+                focus:border-sky-500/50 hover:border-sky-500/50
+                relative overflow-hidden
+                before:content-['']
+                before:absolute before:w-full before:h-full before:top-0 before:left-0
+                before:bg-gradient-to-r before:from-transparent before:via-sky-500/50 before:to-transparent
+                before:transition-all before:duration-300 before:scale-0 focus:before:scale-100
+                resize-none"
+              required
+            ></textarea>
             <button
               type="submit"
               className='w-full mt-6 py-5 px-4 
