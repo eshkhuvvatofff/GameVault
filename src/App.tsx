@@ -35,9 +35,9 @@ const App = () => {
 
   return (
     <Router>
-      {/* {loading ? <LoadingComp /> :  */}
-      <MainContent />
-      {/* // } */}
+      {loading ? <LoadingComp /> :
+        <MainContent />
+      }
     </Router>
   );
 };

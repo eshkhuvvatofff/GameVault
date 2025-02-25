@@ -10,6 +10,7 @@
     "dev": "node src/utils/banner.js && vite"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@tailwindcss/vite": "^4.0.8",

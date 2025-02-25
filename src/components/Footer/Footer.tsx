@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaTelegram, FaInstagram, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
-import { gsap } from 'gsap';
 
 // ... existing code ...
 
@@ -14,23 +13,15 @@ export const Footer = () => {
     email: ''
   });
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    gsap.to(e.currentTarget, {
-      scale: 0.98,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1
-    });
-  }, [formData]);
-
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   }, []);
+
+
+
 
   return (
     <footer className="backdrop-blur-md text-white/80 mt-[800px] z-40">
@@ -71,7 +62,7 @@ export const Footer = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form action="https://formspree.io/f/mvgzjlod" method="POST" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {['name', 'email'].map((field) => (
                 <input
