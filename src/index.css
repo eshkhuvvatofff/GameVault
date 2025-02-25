@@ -8,7 +8,26 @@ body {
     padding: 0;
 }
 
+select {
+    background-color: #1a1a1a;
+    color: #00ffcc;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    appearance: none;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
+::selection {
+    background: linear-gradient(45deg, #ff007f, #7f00f1);
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.8), 0 0 10px rgba(255, 0, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+  }
 
 
 ::-webkit-scrollbar {
