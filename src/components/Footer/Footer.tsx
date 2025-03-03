@@ -10,18 +10,45 @@ export const Footer = () => {
 
   const [formData, setFormData] = useState<Record<string, string>>({
     name: '',
-    email: ''
+    email: '',
+    message: ''
   });
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const [error, setError] = useState('');
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
 
+    try {
+      const response = await fetch("https://formcarry.com/s/MzfIO4B22RO", {
+        method: 'POST',
+        headers: { 
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
 
+      const data = await response.json();
+      
+      if (data.code === 200) {
+        alert("Xabaringiz qabul qilindi, rahmat!");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Xatolik yuz berdi');
+    }
+  };
 
   return (
     <footer className="backdrop-blur-md text-white/80 mt-[800px] z-40">
@@ -62,7 +89,7 @@ export const Footer = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <form action="https://formspree.io/f/mvgzjlod" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {['name', 'email'].map((field) => (
                 <input
@@ -89,8 +116,10 @@ export const Footer = () => {
               ))}
             </div>
             <textarea
-              name="comment"
+              name="message"
               placeholder="Your comment"
+              value={formData.message}
+              onChange={handleChange}
               rows={3}
               className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl 
                 text-base focus:outline-none transition-all duration-300 transform
@@ -106,6 +135,7 @@ export const Footer = () => {
                 resize-none"
               required
             ></textarea>
+            {error && <div className="text-red-500 text-sm">{error}</div>}
             <button
               type="submit"
               className='w-full mt-6 py-5 px-4 
