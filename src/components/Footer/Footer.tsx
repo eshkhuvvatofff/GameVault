@@ -3,6 +3,55 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaTelegram, FaInstagram, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 
+const notify = () => toast.success("Message sent successfully!", {
+  style: {
+    backgroundColor: '#111',
+    color: 'white',
+  },
+});
+
+const InputField = ({ type, name, value, onChange, placeholder }: any) => (
+  <input
+    type={type}
+    name={name}
+    value={value}
+    onChange={onChange}
+    placeholder={placeholder}
+    className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl text-base focus:outline-none transition-all duration-300 transform placeholder:text-gray-500 focus:shadow-[0_0_20px_0_rgba(56,189,248,0.5)] focus:border-sky-500/50 hover:border-sky-500/50"
+    required
+  />
+);
+
+const TextArea = ({ name, value, onChange, placeholder }: any) => (
+  <textarea
+    name={name}
+    value={value}
+    onChange={onChange}
+    placeholder={placeholder}
+    rows={3}
+    className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl text-base focus:outline-none transition-all duration-300 transform placeholder:text-gray-500 focus:shadow-[0_0_20px_0_rgba(56,189,248,0.5)] focus:border-sky-500/50 hover:border-sky-500/50 resize-none"
+    required
+  />
+);
+
+const FooterLink = ({ to, text }: { to: string; text: string }) => (
+  <Link to={to} className="text-gray-400 hover:text-white transition-all duration-300 transform hover:translate-x-1">
+    {text}
+  </Link>
+);
+
+const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
+  <a href={href} className="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" target="_blank" rel="noopener noreferrer">
+    <span className="text-xl">{icon}</span>
+  </a>
+);
+
+const ContactItem = ({ icon, text, href }: { icon: React.ReactNode; text: string; href: string }) => (
+  <a href={href} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-all duration-300 group transform hover:translate-x-1">
+    <span className="text-xl group-hover:scale-110 transition-transform duration-300">{icon}</span>
+    <span>{text}</span>
+  </a>
+);
 
 export const Footer = () => {
   const location = useLocation();
@@ -12,13 +61,6 @@ export const Footer = () => {
     message: ''
   });
   const [error, setError] = useState('');
-
-  const notify = () => toast.success("Message sent successfully!", {
-    style: {
-      backgroundColor: '#111',
-      color: 'white',
-    },
-  });
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -68,9 +110,7 @@ export const Footer = () => {
               <div className="w-10 h-10 rounded-full">
                 <img src="/logo.png" alt="GameVault Logo" />
               </div>
-              <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                GameVault
-              </h2>
+              <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">GameVault</h2>
             </div>
             <div className="grid grid-cols gap-4">
               <FooterLink to="/games" text="Games" />
@@ -86,9 +126,7 @@ export const Footer = () => {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-              Get in Touch
-            </h2>
+            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Get in Touch</h2>
             <div className="space-y-4">
               <ContactItem icon={<FaEnvelope />} text="Eshkhuvvatofff@gmail.com" href="mailto:Eshkhuvvatofff@gmail.com" />
               <ContactItem icon={<FaPhone />} text="+998 91 813 11 88" href="tel:+998918131188" />
@@ -101,63 +139,26 @@ export const Footer = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {['name', 'email'].map((field) => (
-                <input
+                <InputField
                   key={field}
                   type={field}
                   name={field}
-                  placeholder={`Your ${field}`}
                   value={formData[field]}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl 
-                    text-base focus:outline-none transition-all duration-300 transform
-                    placeholder:text-gray-500
-                    shadow-[0_0_0_0_rgba(56,189,248,0.3)]
-                    focus:shadow-[0_0_20px_0_rgba(56,189,248,0.5)]
-                    focus:border-sky-500/50
-                    hover:border-sky-500/50
-                    relative overflow-hidden
-                    before:content-['']
-                    before:absolute before:w-full before:h-full before:top-0 before:left-0
-                    before:bg-gradient-to-r before:from-transparent before:via-sky-500/50 before:to-transparent
-                    before:transition-all before:duration-300 before:scale-0 focus:before:scale-100"
-                  required
+                  placeholder={`Your ${field}`}
                 />
               ))}
             </div>
-            <textarea
+            <TextArea
               name="message"
-              placeholder="Your comment"
               value={formData.message}
               onChange={handleChange}
-              rows={3}
-              className="w-full px-6 py-4 bg-white/5 border border-transparent rounded-xl 
-                text-base focus:outline-none transition-all duration-300 transform
-                placeholder:text-gray-500
-                shadow-[0_0_0_0_rgba(56,189,248,0.3)]
-                focus:shadow-[0_0_20px_0_rgba(56,189,248,0.5)]
-                focus:border-sky-500/50 hover:border-sky-500/50
-                relative overflow-hidden
-                before:content-['']
-                before:absolute before:w-full before:h-full before:top-0 before:left-0
-                before:bg-gradient-to-r before:from-transparent before:via-sky-500/50 before:to-transparent
-                before:transition-all before:duration-300 before:scale-0 focus:before:scale-100
-                resize-none"
-              required
-            ></textarea>
+              placeholder="Your comment"
+            />
             {error && <div className="text-red-500 text-sm">{error}</div>}
             <button
               type="submit"
-              className='w-full mt-6 py-5 px-4 
-                relative
-                bg-gradient-to-r from-[#4f46e5] via-[#ec4899] to-[#8b5cf6]
-                text-white rounded-lg font-medium
-                hover:shadow-[0_0_25px_rgba(236,72,153,0.5)]
-                transition-all duration-600 
-                transform hover:scale-[1.02]
-                active:scale-[0.98]
-                bg-[length:200%_auto]
-                animate-gradient-x
-                before:absolute before:inset-0 before:blur-xl before:bg-inherit before:opacity-40'
+              className='w-full mt-6 py-5 px-4 relative bg-gradient-to-r from-[#4f46e5] via-[#ec4899] to-[#8b5cf6] text-white rounded-lg font-medium hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transition-all duration-600 transform hover:scale-[1.02] active:scale-[0.98]'
             >
               Send Comment
             </button>
@@ -184,25 +185,5 @@ export const Footer = () => {
     </footer>
   );
 };
-
-// Helper Components
-const FooterLink = ({ to, text }: { to: string; text: string }) => (
-  <Link to={to} className="text-gray-400 hover:text-white transition-all duration-300 transform hover:translate-x-1">
-    {text}
-  </Link>
-);
-
-const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
-  <a href={href} className="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" target="_blank" rel="noopener noreferrer">
-    <span className="text-xl">{icon}</span>
-  </a>
-);
-
-const ContactItem = ({ icon, text, href }: { icon: React.ReactNode; text: string; href: string }) => (
-  <a href={href} className="flex items-center space-x-3 text-gray-400 hover:text-white transition-all duration-300 group transform hover:translate-x-1">
-    <span className="text-xl group-hover:scale-110 transition-transform duration-300">{icon}</span>
-    <span>{text}</span>
-  </a>
-);
 
 export default Footer;
