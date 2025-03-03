@@ -6,6 +6,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Particles from './components/Backgrounds/ParticleBG/Particle';
 import Homepage from './pages/homepage/Homepage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainContent = () => {
   return (
@@ -21,6 +23,7 @@ const MainContent = () => {
         {/* <Route path='/game' element={<GamePage />} /> */}
       </Routes>
       <Footer />
+      <ToastContainer />
     </>
   );
 };

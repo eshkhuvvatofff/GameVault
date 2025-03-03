@@ -1,10 +1,19 @@
 import { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaTelegram, FaInstagram, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 export const Footer = () => {
   const location = useLocation();
+  const notify = () => toast.success("Message sent successfully!", {
+    style: {
+      backgroundColor: '#111', // Yashil fon
+      color: 'white', // Oq matn
+    },
+  });
+
+
   if (location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/restorepassword' || location.pathname === '/reset-password') return null;
 
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -29,7 +38,7 @@ export const Footer = () => {
     try {
       const response = await fetch("https://formcarry.com/s/MzfIO4B22RO", {
         method: 'POST',
-        headers: { 
+        headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
         },
@@ -37,9 +46,9 @@ export const Footer = () => {
       });
 
       const data = await response.json();
-      
+
       if (data.code === 200) {
-        alert("Xabaringiz qabul qilindi, rahmat!");
+        notify();
         setFormData({ name: '', email: '', message: '' });
       } else {
         setError(data.message);
@@ -160,6 +169,17 @@ export const Footer = () => {
           © {new Date().getFullYear()} GameVault. All rights reserved.
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000} // Xabarni 5 soniya ko‘rsatish
+        hideProgressBar={false} // Progress barni ko‘rsatish
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </footer>
   );
 };

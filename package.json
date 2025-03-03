@@ -24,6 +24,7 @@
     "react-router-dom": "^7.2.0",
     "react-simple-typewriter": "^5.0.1",
     "react-spinners": "^0.15.0",
+    "react-toastify": "^11.0.5",
     "rollup": "^4.34.8",
     "stats.js": "^0.17.0",
     "tailwindcss": "^4.0.8",
