@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaTelegram, FaInstagram, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
-// ... existing code ...
 
 export const Footer = () => {
   const location = useLocation();
