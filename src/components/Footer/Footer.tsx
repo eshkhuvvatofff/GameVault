@@ -6,23 +6,19 @@ import { toast, ToastContainer } from 'react-toastify';
 
 export const Footer = () => {
   const location = useLocation();
-  const notify = () => toast.success("Message sent successfully!", {
-    style: {
-      backgroundColor: '#111', // Yashil fon
-      color: 'white', // Oq matn
-    },
-  });
-
-
-  if (location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/restorepassword' || location.pathname === '/reset-password') return null;
-
   const [formData, setFormData] = useState<Record<string, string>>({
     name: '',
     email: '',
     message: ''
   });
-
   const [error, setError] = useState('');
+
+  const notify = () => toast.success("Message sent successfully!", {
+    style: {
+      backgroundColor: '#111',
+      color: 'white',
+    },
+  });
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -52,14 +48,16 @@ export const Footer = () => {
         setFormData({ name: '', email: '', message: '' });
       } else {
         setError(data.message);
-        setTimeout(() => {
-          setError('');
-        }, 5000)
+        setTimeout(() => setError(''), 5000);
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Xatolik yuz berdi');
     }
   };
+
+  if (['/signin', '/signup', '/restorepassword', '/reset-password'].includes(location.pathname)) {
+    return null;
+  }
 
   return (
     <footer className="backdrop-blur-md text-white/80 mt-[800px] z-40">
@@ -174,8 +172,8 @@ export const Footer = () => {
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={5000} // Xabarni 5 soniya ko‘rsatish
-        hideProgressBar={false} // Progress barni ko‘rsatish
+        autoClose={5000}
+        hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
