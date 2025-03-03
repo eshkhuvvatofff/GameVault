@@ -52,6 +52,9 @@ export const Footer = () => {
         setFormData({ name: '', email: '', message: '' });
       } else {
         setError(data.message);
+        setTimeout(() => {
+          setError('');
+        }, 5000)
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Xatolik yuz berdi');

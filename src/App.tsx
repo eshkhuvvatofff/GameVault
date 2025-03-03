@@ -22,8 +22,8 @@ const MainContent = () => {
         {/* <Route path='/admin' element={<AdminPage />} /> */}
         {/* <Route path='/game' element={<GamePage />} /> */}
       </Routes>
-      <Footer />
       <ToastContainer />
+      <Footer />
     </>
   );
 };
