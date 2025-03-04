@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link,  useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import './header.css';
+
 const Header = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,24 +30,19 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-
-
-  // const location = useLocation();
-  // if (location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/restorepassword' || location.pathname === '/reset-password') return null;
-
-  return (  
+  return (
     <>
       <div className="h-16"></div>
 
-      <header className="bg-transparent backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg">
+      <header className="bg-transparent backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg transition-all">
         <nav className="px-4 lg:px-6 h-16">
           <div className="max-w-screen-xl mx-auto flex items-center justify-between h-full">
             {/* Logo va Search Container */}
             <div className="flex items-center flex-1 max-w-[55%]">
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8rounded-full">
-                  <img src="/logo.png" alt="Webstite logo" />
+                <div className="w-8 h-8 rounded-full">
+                  <img src="/logo.png" alt="Website logo" />
                 </div>
                 <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
                   GameVault
@@ -82,7 +78,7 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Desktop Navigation - Centered when search is closed */}
+            {/* Desktop Navigation */}
             <div className={`hidden lg:flex items-center transition-all duration-300 ${isSearchExpanded ? '-ml-20' : 'absolute left-1/2 -translate-x-1/2'}`}>
               <div className="flex items-center space-x-14">
                 <Link to="/" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
@@ -124,12 +120,102 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
-            </button>
+            </button> 
           </div>
         </nav>
+        {/* Mobile Menu */}
+        <div 
+          className={`fixed inset-0 bg-gray-900/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out lg:hidden ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col h-full">
+            {/* Mobile Menu Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-800">
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="w-8 h-8 rounded-full">
+                  <img src="/logo.png" alt="Website logo" />
+                </div>
+                <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                  GameVault
+                </span>
+              </Link>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <FaTimes className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Mobile Search */}
+            <div className="p-4 border-b border-gray-800">
+              <form onSubmit={handleSearch} className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for games..."
+                  className="w-full h-12 pl-12 pr-4 bg-gray-800/50 text-white rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <svg
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </form>
+            </div>
+
+            {/* Mobile Navigation Links */}
+            <nav className="flex-1 overflow-y-auto p-4">
+              <div className="space-y-4">
+                {[
+                  { to: "/", label: "Home" },
+                  { to: "/games", label: "Games" },
+                  { to: "/categories", label: "Categories" },
+                  { to: "/about", label: "About" },
+                ].map((link, index) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="block py-3 text-gray-300 hover:text-white transition-colors text-lg font-medium"
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: `slideIn 0.5s ease-out ${index * 100}ms forwards`,
+                    }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+
+            {/* Mobile Auth Buttons */}
+            <div className="p-4 border-t border-gray-800 space-y-3">
+              <Link
+                to="/login"
+                className="block w-full py-3 text-center bg-gradient-to-r from-[#FF416C] to-[#FF4B2B] text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="block w-full py-3 text-center bg-gradient-to-r from-[#4776E6] to-[#8E54E9] text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Register
+              </Link>
+            </div>
+          </div>
+        </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
