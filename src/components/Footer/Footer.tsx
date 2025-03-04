@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaTelegram, FaInstagram, FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
+import '../../styles/animations.css';
 
 const notify = () => toast.success("Message sent successfully!", {
   style: {
@@ -158,7 +159,7 @@ export const Footer = () => {
             {error && <div className="text-red-500 text-sm">{error}</div>}
             <button
               type="submit"
-              className='w-full mt-6 py-5 px-4 relative bg-gradient-to-r from-[#4f46e5] via-[#ec4899] to-[#8b5cf6] text-white rounded-lg font-medium hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transition-all duration-600 transform hover:scale-[1.02] active:scale-[0.98]'
+              className='cursor-pointer w-full mt-6 py-5 px-4 relative bg-gradient-to-r from-[#4f46e5] via-[#ec4899] to-[#8b5cf6] text-white rounded-lg font-medium hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transition-all duration-600 transform hover:scale-[1.02] active:scale-[0.98] animate-gradient'
             >
               Send Comment
             </button>
