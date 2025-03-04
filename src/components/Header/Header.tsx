@@ -1,17 +1,39 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom"
+import { Link,  useNavigate } from "react-router-dom"
 import './header.css';
 const Header = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(searchQuery);
-  }
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+      setIsSearchExpanded(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearchExpanded(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+
+
+  // const location = useLocation();
+  // if (location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/restorepassword' || location.pathname === '/reset-password') return null;
+
   return (  
     <>
       <div className="h-16"></div>
@@ -66,13 +88,13 @@ const Header = () => {
                 <Link to="/" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
                   Home
                 </Link>
-                <Link to="/games" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
+                <Link to="/" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
                   Games
                 </Link>
-                <Link to="/categories" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
+                <Link to="/" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
                   Categories
                 </Link>
-                <Link to="/about" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
+                <Link to="/" className="text-[#9ca3af] hover:text-white nav-link transition-colors">
                   About
                 </Link>
               </div>
@@ -81,14 +103,14 @@ const Header = () => {
             {/* Login/Register buttons */}
             <div className="hidden lg:flex items-center space-x-4 ml-8">
               <Link
-                to="/signin"
+                to="/#"
                 className="relative px-5 py-1.5 bg-gradient-to-r from-[#FF416C] to-[#FF4B2B] hover:from-[#FF4B2B] hover:to-[#FF416C] text-white rounded-lg transition-all duration-500 text-sm shadow-lg hover:shadow-[#FF416C]/50 hover:-translate-y-0.3 hover:scale-105 active:scale-95 overflow-hidden group"
               >
                 <span className="relative z-10">Login</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#FF416C] to-[#FF4B2B] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
               </Link>
               <Link
-                to="/signup"
+                to="/#"
                 className="relative px-3 py-1.5 bg-gradient-to-r from-[#4776E6] to-[#8E54E9] hover:from-[#8E54E9] hover:to-[#4776E6] text-white rounded-lg transition-all duration-500 text-sm shadow-lg hover:shadow-[#8E54E9]/50 hover:-translate-y-0.3 hover:scale-105 active:scale-95 overflow-hidden group"
               >
                 <span className="relative z-10">Register</span>
@@ -106,7 +128,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu */}
-          {isMenuOpen && (
+          {/* {isMenuOpen && (
             <div className="lg:hidden absolute top-16 left-0 right-0 bg-[#111]/95 backdrop-blur-md border-t border-gray-800 shadow-xl z-50">
               <div className="px-4 py-3">
                 <form onSubmit={handleSearch} className="relative mb-4">
@@ -130,25 +152,25 @@ const Header = () => {
                   <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                     Home
                   </Link>
-                  <Link to="/games" className="text-gray-300 hover:text-white transition-colors">
+                  <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                     Games
                   </Link>
-                  <Link to="/categories" className="text-gray-300 hover:text-white transition-colors">
+                  <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                     Categories
                   </Link>
-                  <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+                  <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                     About
                   </Link>
                   <div className="pt-4 flex flex-col space-y-4">
                     <Link
-                      to={"/signin"}
+                      to="/#"
                       className="relative text-center px-3 py-1.5 bg-gradient-to-r from-[#FF416C] to-[#FF4B2B] hover:from-[#FF4B2B] hover:to-[#FF416C] text-white rounded-lg transition-all duration-500 text-sm shadow-lg hover:shadow-[#FF416C]/50 hover:-translate-y-0.5 hover:scale-105 active:scale-95 overflow-hidden group"
                     >
                       <span className="relative z-10">Login</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-[#FF416C] to-[#FF4B2B] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
                     </Link>
                     <Link
-                      to={"/signup"}
+                      to="/#"
                       className="relative text-center px-3 py-1.5 bg-gradient-to-r from-[#4776E6] to-[#8E54E9] hover:from-[#8E54E9] hover:to-[#4776E6] text-white rounded-lg transition-all duration-500 text-sm shadow-lg hover:shadow-[#8E54E9]/50 hover:-translate-y-0.5 hover:scale-105 active:scale-95 overflow-hidden group"
                     >
                       <span className="relative z-10">Register</span>
@@ -158,7 +180,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
         </nav>
       </header>
     </>
