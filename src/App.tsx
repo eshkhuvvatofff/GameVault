@@ -39,7 +39,7 @@ const MainContent = () => {
           <Footer />
         </div>
       </ContextMenuTrigger>
-      <ContextMenuContent className="w-64">
+      <ContextMenuContent className="w-64 border-3 bg-gradient-to-br from-black/80 to-black/80 text-white/70 font-bold">
         <ContextMenuItem inset>
           Back
           <ContextMenuShortcut>⌘[</ContextMenuShortcut>
