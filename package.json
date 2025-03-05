@@ -13,7 +13,7 @@
     "@formspree/react": "^2.5.1",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "@tailwindcss/vite": "^4.0.8",
+    "@tailwindcss/vite": "^4.0.9",
     "chalk": "^5.4.1",
     "figlet": "^1.8.0",
     "gsap": "^3.12.7",
@@ -27,7 +27,7 @@
     "react-toastify": "^11.0.5",
     "rollup": "^4.34.8",
     "stats.js": "^0.17.0",
-    "tailwindcss": "^4.0.8",
+    "tailwindcss": "^4.0.9",
     "three": "^0.173.0"
   },
   "devDependencies": {
