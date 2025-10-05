@@ -1,57 +1,33 @@
-# 🎮 GameVault
+# Project-Name
 
-<img src="/public/logo.png" alt="GameVault Logo" width="150" align="right" />
+Description
+---
 
-GameVault — bu zamonaviy va qulay **o‘yin platformasi**, unda siz **torrent o‘yinlarini yuklashingiz**, **savegame fayllaringizni** online kuzatishingiz va **profilingizga ulangan sahifalar orqali** oldingi yutuqlaringizni ko‘rishingiz mumkin!
+## 🚀 Tech Stack
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![NextAuth](https://img.shields.io/badge/NextAuth.js-000000?style=for-the-badge&logo=auth0&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
 ---
 
-## 🚀 Asosiy afzalliklar
+## 📌 Objectives
 
-1. **Oson va tezkor yuklash** — O'yinlaringizni torrent orqali yuklab oling va arxivlash.
-2. **Savegame sinxronizatsiyasi** — O‘yinlaringizni o‘ynash davomida avtomatik saqlash va istalgan vaqtda ko‘rib chiqish.
-3. **Profil bilan bog‘langan tizim** — O‘zingizning o‘yin tarixingizni kuzatish va rivojlanishingizni nazorat qilish.
+- about project
 
 ---
 
-## 🛠 Texnologiyalar
+## ⚙️ Installation & Setup
 
-GameVault quyidagi zamonaviy texnologiyalar yordamida ishlab chiqilgan:
+Follow these steps to run the project locally:
 
-- ⚛ **React (Vite + TypeScript)**
-- 🎨 **TailwindCSS + Flowbite + MagicUI**
-- 🔥 **Firebase (Auth & Database)**
-- 🌍 **React Router**
+```bash
+# Clone the repository
+git clone https://github.com/eshkhuvvatofff/projectname.git
 
----
+# Navigate into the project folder
+cd projectname
 
-## 📥 O‘rnatish
-
-Loyihani ishga tushirish uchun quyidagi bosqichlarni bajaring:
-
-```sh
-# Repository'ni klonlash
-# $ git clone https://github.com/Eshkhuvvatofff/GameVault.git
-
-# Loyihaga o‘tish
-$ cd GameVault
-
-# Zaruriy paketlarni o‘rnatish
-$ npm install
-
-# Local serverni ishga tushirish
-$ npm run dev
-```
-
----
-
-## 📜 Litsenziya
-
-**Litsenziya: [Litsenziya here]**
-
----
-
-## 👤 Muallif
-
-- **Eshquvvatov Asliddin**
-
+# Install dependencies
+npm install
