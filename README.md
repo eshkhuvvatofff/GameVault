@@ -15,11 +15,10 @@ Built with **Next.js**, **NextAuth.js**, and **Firebase**, it provides a fast, s
 
 ## ✨ Features
 
-- 🔐 **Authentication** — Secure sign-in with Google, GitHub, or Email via NextAuth.js  
+- 🔐 **Authentication** — Secure sign-in with Google, GitHub, or Email 
 - ☁️ **Cloud Storage** — Upload & download game save files using Firebase Storage  
 - 📂 **Personal Vaults** — Each user has their own isolated storage area  
 - ⚡ **Modern UI** — Built with TailwindCSS and fully responsive  
-- 🧩 **Metadata Management** — Game file details stored in MongoDB  
 - 🌙 **Dark Mode Ready** — Sleek dark-blue theme for immersive experience  
 
 ---
@@ -30,15 +29,21 @@ Built with **Next.js**, **NextAuth.js**, and **Firebase**, it provides a fast, s
 |-------------|--------------|-------|
 | **Next.js 14** | Framework for the frontend and API routes | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) |
 | **TailwindCSS** | Styling and responsive layout | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white) |
-| **NextAuth.js** | Authentication management | ![NextAuth.js](https://img.shields.io/badge/NextAuth.js-2F855A?style=for-the-badge&logo=nextdotjs&logoColor=white) |
-| **Firebase Storage** | File upload & download hosting | ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black) |
-| **MongoDB** | Database for file metadata | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) |
+| **Firebase Storage** | File upload & download hosting | ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black) 
+
+---
+---
+
+## 🧑‍💻 Author
+
+**GameVault** — built by [@your-github-username](https://github.com/eshkhuvvatofff)  
+> “Keep your saves safe — your progress deserves a vault.”
 
 ---
 
-## ⚙️ Setup & Installation
+## 🪪 License
 
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/<your-username>/gamevault.git
-cd gamevault
+This project is licensed under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for more details.
+
+---
