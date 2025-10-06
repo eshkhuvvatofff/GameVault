@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://img.icons8.com/fluency/96/game-controller.png" alt="GameVault Logo" width="100"/>
+  <img src="./public/banner.png" alt="GameVault Logo" width="400" style="border-radius:15px;"/>
   <h1>🎮 GameVault</h1>
   <p><i>Save your game progress in the cloud — securely and instantly.</i></p>
 </div>
