@@ -2,8 +2,8 @@ import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import "./globals.css";
 
 export const metadata = {
-  title: "Example Name",
-  description: "Example Desc",
+  title: "GameVault",
+  description: "GameVault - fall to game",
   icons: {
     icon: "/Logo.png",
   },

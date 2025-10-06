@@ -163,7 +163,7 @@ export default function Navbar() {
                         {/* Main nav */}
                         <div className="flex items-center gap-6">
                             <a href="#" className="text-primary hover:text-primary/90">
-                                <h1 className="font-extrabold text-[28px]">Next Auth</h1>
+                                <h1 className="font-extrabold text-[28px]">Next Authz</h1>
                             </a>
                             {/* Navigation menu */}
                             <NavigationMenu viewport={false} className="max-md:hidden">

@@ -150,3 +150,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Minimal Neon Text Effects */
+.neon-text {
+  text-shadow: 
+    0 0 2px currentColor,
+    0 0 4px currentColor,
+    0 0 8px currentColor;
+  transition: text-shadow 0.3s ease;
+}
+
+.neon-text:hover {
+  text-shadow: 
+    0 0 4px currentColor,
+    0 0 8px currentColor,
+    0 0 12px currentColor,
+    0 0 16px currentColor;
+}
+
+.neon-text-primary {
+  text-shadow: 
+    0 0 1px var(--primary),
+    0 0 2px var(--primary),
+    0 0 3px var(--primary);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Subtle neon for accent text */
+.neon-text-accent {
+  text-shadow: 
+    0 0 1px currentColor,
+    0 0 2px currentColor;
+  transition: text-shadow 0.2s ease;
+}
+
+.neon-text-accent:hover {
+  text-shadow: 
+    0 0 1px currentColor,
+    0 0 2px currentColor,
+    0 0 4px currentColor;
+}
