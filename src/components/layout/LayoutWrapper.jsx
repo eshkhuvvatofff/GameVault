@@ -1,5 +1,6 @@
 "use client"
 import { usePathname } from "next/navigation";
+import ThreeJsScene from "@/components/custom-ui/prackricle-bg";
 import { ThemeProvider } from "../theme-provider";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -15,9 +16,9 @@ export default function LayoutWrapper({ children }) {
                 enableSystem
                 disableTransitionOnChange
             >
-                {!hideUi && <Navbar />}
+                {!hideUi && <Navbar /> || <ThreeJsScene />}
                 {children}
-                {!hideUi && <Footer />}
+                {!hideUi && <Footer /> || <ThreeJsScene />}
             </ThemeProvider>
 
         </>

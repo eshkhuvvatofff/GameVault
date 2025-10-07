@@ -19,48 +19,23 @@ import { ThemeToggle } from "./ThemeToggle"
 
 
 const navigationLinks = [
-    { href: "#", label: "Home" },
+    { href: "/", label: "Home" },
+    { href: "/saved-files", label: "Saved files" },
     {
-        label: "Features",
+        label: "Games",
         submenu: true,
         type: "description",
         items: [
             {
-                href: "#",
-                label: "Components",
-                description: "Browse all components in the library.",
+                href: "/torrent-games",
+                label: "Torrent Games",
+                description: "Browse all torrent games.",
             },
             {
-                href: "#",
-                label: "Documentation",
+                href: "/official-games",
+                label: "Official Games",
                 description: "Learn how to use the library.",
-            },
-            {
-                href: "#",
-                label: "Templates",
-                description: "Pre-built layouts for common use cases.",
-            },
-        ],
-    },
-    {
-        label: "Pricing",
-        submenu: true,
-        type: "simple",
-        items: [
-            { href: "#", label: "Product A" },
-            { href: "#", label: "Product B" },
-            { href: "#", label: "Product C" },
-            { href: "#", label: "Product D" },
-        ],
-    },
-    {
-        label: "About",
-        submenu: true,
-        type: "icon",
-        items: [
-            { href: "#", label: "Getting Started", icon: "BookOpenIcon" },
-            { href: "#", label: "Tutorials", icon: "LifeBuoyIcon" },
-            { href: "#", label: "About Us", icon: "InfoIcon" },
+            }
         ],
     },
 ]
@@ -163,7 +138,7 @@ export default function Navbar() {
                         {/* Main nav */}
                         <div className="flex items-center gap-6">
                             <a href="#" className="text-primary hover:text-primary/90">
-                                <h1 className="font-extrabold text-[28px]">Next Authz</h1>
+                                <h1 className="font-extrabold text-[28px]">GameVault</h1>
                             </a>
                             {/* Navigation menu */}
                             <NavigationMenu viewport={false} className="max-md:hidden">

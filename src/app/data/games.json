@@ -1,0 +1,143 @@
+[
+    {
+      "id": 1,
+      "name": "Elden Ring",
+      "genre": "RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+      "description": "FromSoftware tomonidan yaratilgan ochiq dunyodagi epik sarguzasht."
+    },
+    {
+      "id": 2,
+      "name": "Hollow Knight",
+      "genre": "Metroidvania",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg",
+      "description": "Qorong‘i yer osti dunyosida kichik ritsarning sirli sayohati."
+    },
+    {
+      "id": 3,
+      "name": "The Witcher 3: Wild Hunt",
+      "genre": "RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
+      "description": "Geralt ismli yirtqich ovchining o‘tkir hikoyasi va tanlovga asoslangan o‘yin."
+    },
+    {
+      "id": 4,
+      "name": "Cyberpunk 2077",
+      "genre": "Action RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+      "description": "Kelajakdagi Night Cityda kiborlar va texnologiya orasidagi kurash."
+    },
+    {
+      "id": 5,
+      "name": "Red Dead Redemption 2",
+      "genre": "Adventure",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+      "description": "Vahshiy G‘arbdagi jinoyatchilarning so‘nggi davrini hikoya qiluvchi o‘yin."
+    },
+    {
+      "id": 6,
+      "name": "Sekiro: Shadows Die Twice",
+      "genre": "Action",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg",
+      "description": "Yapon samurayi Sekironing qasos yo‘lida o‘tkir janglari."
+    },
+    {
+      "id": 7,
+      "name": "Dark Souls III",
+      "genre": "Action RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/374320/header.jpg",
+      "description": "Qorong‘i va xavfli dunyoda sinovli janglar bilan to‘la sarguzasht."
+    },
+    {
+      "id": 8,
+      "name": "God of War",
+      "genre": "Action Adventure",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
+      "description": "Kratos va o‘g‘li Atreusning Norvegiya xudolariga qarshi kurashi."
+    },
+    {
+      "id": 9,
+      "name": "Ghost of Tsushima",
+      "genre": "Action Adventure",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202009/1020/85f8aU8vflJm3wGslWom6Xv3.png",
+      "description": "Samuray Jin Tsushimaning erkinlik uchun kurashi."
+    },
+    {
+      "id": 10,
+      "name": "Assassin's Creed Mirage",
+      "genre": "Action Stealth",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/368500/header.jpg",
+      "description": "Bag‘dod ko‘chalarida yashirin suiqasdchi Basimning sarguzashti."
+    },
+    {
+      "id": 11,
+      "name": "Minecraft",
+      "genre": "Sandbox",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1672970/header.jpg",
+      "description": "Cheksiz dunyoda qurish, kashf etish va omon qolish o‘yini."
+    },
+    {
+      "id": 12,
+      "name": "Terraria",
+      "genre": "Sandbox Adventure",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg",
+      "description": "2D dunyoda qazish, jang qilish va yaratuvchanlik aralashgan o‘yin."
+    },
+    {
+      "id": 13,
+      "name": "Celeste",
+      "genre": "Platformer",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/504230/header.jpg",
+      "description": "Madeline ismli qizning ruhiy to‘siqlarni yengish haqidagi sayohati."
+    },
+    {
+      "id": 14,
+      "name": "Stardew Valley",
+      "genre": "Simulation RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
+      "description": "Qishloq xo‘jaligi, munosabatlar va tinch hayotga asoslangan o‘yin."
+    },
+    {
+      "id": 15,
+      "name": "Baldur’s Gate 3",
+      "genre": "RPG",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+      "description": "D&D asosidagi chuqur hikoya va tanlovlarga boy RPG."
+    },
+    {
+      "id": 16,
+      "name": "DOOM Eternal",
+      "genre": "Shooter",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg",
+      "description": "Demonlarga qarshi tezkor, zo‘r grafikali otishma o‘yini."
+    },
+    {
+      "id": 17,
+      "name": "Hades",
+      "genre": "Rogue-like",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1145360/header.jpg",
+      "description": "Zagreusning Ahd dunyosidan qochish urinishlari va janglari."
+    },
+    {
+      "id": 18,
+      "name": "Death Stranding",
+      "genre": "Adventure",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1190460/header.jpg",
+      "description": "Post-apokaliptik dunyoda izolyatsiyani yengib o‘tish hikoyasi."
+    },
+    {
+      "id": 19,
+      "name": "Resident Evil 4 Remake",
+      "genre": "Horror Action",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+      "description": "Leon S. Kennedining xavfli qutqaruv missiyasi va dahshatli muhit."
+    },
+    {
+      "id": 20,
+      "name": "The Last of Us Part I",
+      "genre": "Action Drama",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg",
+      "description": "Joel va Ellie bilan insoniyatning vayron bo‘lgan dunyosidagi omon qolish hikoyasi."
+    }
+  ]
+  

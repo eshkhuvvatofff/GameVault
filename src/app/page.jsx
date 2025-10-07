@@ -1,41 +1,96 @@
+"use client"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useState, useEffect } from "react";
 export default function Home() {
+  const [games, setGames] = useState([]);
+  const [newGame, setNewGame] = useState({ name: "", genre: "" });
+  useEffect(() => {
+    fetch("/api/games")
+      .then(res => res.json())
+      .then(data => setGames(data));
+  }, []);
+
+  async function addGame() {
+    const res = await fetch("/api/games", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newGame),
+    });
+    const data = await res.json();
+    setGames(prev => [...prev, data]);
+    setNewGame({ name: "", genre: "" });
+  }
+
+  async function deleteGame(id) {
+    await fetch(`/api/games/${id}`, { method: "DELETE" });
+    setGames(prev => prev.filter(g => g.id !== id));
+  }
+
+
+
+
   return (
     <>
-      <section className="px-4 py-32 mx-auto max-w-7xl">
-        <div className="w-full mx-auto text-left md:w-11/12 xl:w-8/12 md:text-center">
-          <h1 className="mb-3 text-4xl font-bold text-gray-900 md:text-5xl md:leading-tight md:font-extrabold">A secure, faster way to transfer.</h1>
-          <p className="mb-6 text-lg text-gray-500 md:text-xl md:leading-normal">
-            We’re on a mission to bring transparency to finance. We charge as little as possible, and we always show you upfront. No hidden fees. No bad exchange rates. No surprises.
-          </p>
-          <form className="grid w-full grid-cols-1 gap-3 pt-1 mx-auto mb-8 lg:grid-cols-6 md:w-7/12">
-            <label className="col-auto lg:col-span-4">
-              <span className="sr-only">Your Email</span>
-              <input className="mt-0 form-input form-input-lg" type="email" placeholder="Enter your email..."/>
-            </label>
-            <button className="w-full col-auto btn btn-primary btn-lg lg:col-span-2" type="submit">Get Started</button>
-          </form>
-          <div className="flex flex-col justify-start mb-3 space-x-0 space-y-2 text-xs text-gray-600 md:flex-row md:justify-center md:space-x-8 md:space-y-0">
-            <div className="flex items-center">
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mr-1 text-green-600">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-              </svg>
-              No credit card required
-            </div>
-            <div className="flex items-center">
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mr-1 text-green-600">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-              </svg>
-              14 days free
-            </div>
-            <div className="flex items-center">
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mr-1 text-green-600">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-              </svg>
-              Cancel anytime
-            </div>
-          </div>
-        </div>
+      <section>
+        <main className="flex gap-4 justify-center flex-wrap">
+          {games.map(f => (
+            <Card className="w-full max-w-md" key={f.id}>
+              <CardHeader>
+                <CardTitle>{f.name}</CardTitle>
+                <CardDescription>{f.genre}</CardDescription>
+                <CardAction><img src={f.image} alt="" /></CardAction>
+              </CardHeader>
+              <CardContent>
+                <p>{f.description}</p>
+              </CardContent>
+              {/* <CardFooter>
+                <p>{CardFooter}</p>
+              </CardFooter> */}
+            </Card>
+          ))}
+
+        </main>
       </section>
+
+
+      <div className="p-6">
+        <h2 className="text-2xl font-semibold mb-4">🎮 GameVault</h2>
+
+        <div className="flex gap-2 mb-4">
+          <input
+            className="border px-2 py-1 rounded"
+            placeholder="Game name"
+            value={newGame.name}
+            onChange={e => setNewGame({ ...newGame, name: e.target.value })}
+          />
+          <input
+            className="border px-2 py-1 rounded"
+            placeholder="Genre"
+            value={newGame.genre}
+            onChange={e => setNewGame({ ...newGame, genre: e.target.value })}
+          />
+          <button onClick={addGame} className="bg-blue-600 text-white px-3 py-1 rounded">
+            Add
+          </button>
+        </div>
+
+        {/* <ul className="space-y-2">
+          {games.map(g => (
+            <li key={g.id} className="bg-gray-800 text-white px-3 py-2 rounded flex justify-between">
+              <span>{g.name} — {g.genre}</span>
+              <button onClick={() => deleteGame(g.id)} className="text-red-400 hover:text-red-500">Delete</button>
+            </li>
+          ))}
+        </ul> */}
+      </div>
     </>
   )
 }
