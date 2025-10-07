@@ -1,7 +1,7 @@
 "use client"
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 export default function Home() {
   const [games, setGames] = useState([]);
   const [newGame, setNewGame] = useState({ name: "", genre: "" });
@@ -19,6 +20,12 @@ export default function Home() {
   }, []);
 
   async function addGame() {
+
+    if (!newGame.name.trim()) {
+      return toast.error("sry")
+    }
+
+
     const res = await fetch("/api/games", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -39,22 +46,39 @@ export default function Home() {
 
   return (
     <>
-      <section>
+      <section className="mt-28">
         <main className="flex gap-4 justify-center flex-wrap">
           {games.map(f => (
-            <Card className="w-full max-w-md" key={f.id}>
-              <CardHeader>
-                <CardTitle>{f.name}</CardTitle>
-                <CardDescription>{f.genre}</CardDescription>
-                <CardAction><img src={f.image} alt="" /></CardAction>
+
+            <Card key={f.id} className="w-full max-w-sm bg-[#0b0f19] border border-[#1a2234] rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+              {/* Header */}
+              <CardHeader className="px-5 py-4">
+                <CardTitle className="text-base font-medium text-gray-100 tracking-wide">
+                  {f.name}
+                </CardTitle>
+                <CardDescription className="text-sm text-gray-400 mt-1 line-clamp-2">
+                  {f.description}
+                </CardDescription>
               </CardHeader>
-              <CardContent>
-                <p>{f.description}</p>
+
+              {/* Image */}
+              <CardContent className="px-5 pb-3">
+                <img
+                  src={f.image}
+                  alt={f.name}
+                  className="w-full cursor-pointer h-36 object-cover rounded-lg border border-[#1c2335] transition-transform duration-300 hover:scale-[1.02]"
+                />
               </CardContent>
-              {/* <CardFooter>
-                <p>{CardFooter}</p>
-              </CardFooter> */}
+
+              {/* Footer */}
+              <CardFooter className="flex justify-between items-center px-5 py-3 border-t border-[#1a2234]">
+                <span className="text-xs text-gray-500">{f.genre}</span>
+                <Button className="bg-[#1e2a48] cursor-pointer hover:bg-[#26345b] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200">
+                  Download
+                </Button>
+              </CardFooter>
             </Card>
+
           ))}
 
         </main>

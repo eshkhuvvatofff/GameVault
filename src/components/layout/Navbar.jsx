@@ -45,7 +45,7 @@ export default function Navbar() {
     return (
         <>
             <header className="border-b px-4 md:px-6">
-                <div className="flex h-16 items-center justify-between gap-4">
+                <div className="flex h-16 w-full items-center justify-between px-16 fixed ">
                     {/* Left side */}
                     <div className="flex items-center gap-2">
                         {/* Mobile menu trigger */}
@@ -58,12 +58,12 @@ export default function Navbar() {
                                 >
                                     <svg
                                         className="pointer-events-none"
-                                        width={16}
-                                        height={16}
+                                        width={40}
+                                        height={40}
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        strokeWidth="2"
+                                        strokeWidth="3"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +105,9 @@ export default function Navbar() {
                                                                 </li>
                                                             ))}
                                                         </ul>
+                                                        <button className="w-full text-left px-2 py-1.5 text-sm hover:bg-muted rounded-md transition-colors">
+                                                            <a href="/">Sign In</a>
+                                                        </button>
                                                     </>
                                                 ) : (
                                                     <NavigationMenuLink href={link.href} className="py-1.5">
@@ -137,7 +140,7 @@ export default function Navbar() {
                         </Popover>
                         {/* Main nav */}
                         <div className="flex items-center gap-6">
-                            <a href="#" className="text-primary hover:text-primary/90">
+                            <a href="#" className="text-primary max-sm:hidden hover:text-primary/90">
                                 <h1 className="font-extrabold text-[28px]">GameVault</h1>
                             </a>
                             {/* Navigation menu */}
