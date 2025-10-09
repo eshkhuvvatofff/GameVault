@@ -192,99 +192,65 @@ export default function AddGame() {
 
 
             <main className="flex gap-8 justify-center flex-wrap">
-                {games.map(f => (
-
-                    // <Card key={f.id} className="w-full max-w-sm bg-[#0b0f19] border border-[#1a2234] rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
-                    //     <CardHeader className="px-5 py-4">
-                    //         <CardTitle className="text-base font-medium text-gray-100 tracking-wide">
-                    //             {f.name}
-                    //         </CardTitle>
-                    //         <CardDescription className="text-sm text-gray-400 mt-1 line-clamp-2">
-                    //             {f.description}
-                    //         </CardDescription>
-                    //     </CardHeader>
-
-                    //     <CardContent className="px-5 pb-3">
-                    //         <img
-                    //             src={f.image}
-                    //             alt={f.name}
-                    //             className="w-full cursor-pointer h-36 object-cover rounded-lg border border-[#1c2335] transition-transform duration-300 hover:scale-[1.02]"
-                    //         />
-                    //     </CardContent>
-
-                    //     <CardFooter className="flex justify-between items-center px-5 py-3 border-t border-[#1a2234]">
-                    //         <span className="text-xs text-gray-500">{f.genre}</span>
-                    //         <div className="flex gap-2">
-                    //             <Button onClick={() => deleteGame(f.id)} className="bg-[#7f0c03] cursor-pointer hover:bg-[#8b1e13] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200">
-                    //                 Delete
-                    //             </Button>
-                    //             <Button className="bg-[#1e2a48] cursor-pointer hover:bg-[#26345b] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200">
-                    //                 Download
-                    //             </Button>
-                    //         </div>
-                    //     </CardFooter>
-                    // </Card>
-
-
-                    <section key={f.id} className="w-[350px] h-[370px] rounded-md bg-[#0c0f15] border border-[#1a2234] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
-                        {/* Image */}
-                        <div className="w-full h-[180px] bg-[#10141c]">
-                            <img
-                                src={f.image}
-                                alt={f.name}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-
-                        {/* Info */}
-                        <div className="p-5 border-t border-[#151b28]">
-                            <h2 className="text-lg font-semibold text-gray-100 mb-2">{f.name}</h2>
-                            <p className="text-sm text-gray-400 leading-snug line-clamp-2">
-                                {f.description}
-                            </p>
-                        </div>
-
-                        {/* Footer */}
-                        <div className="flex justify-between items-center px-5 py-4 border-t border-[#151b28]">
-                            <span className="text-[13px] text-blue-400  tracking-wider">
-                                {f.genre}
-                            </span>
-                            <div className="flex gap-2">
-                                <button
-                                    onClick={() => {
-                                        deleteGame(f.id),
-                                        toast("success")
-                                    }}
-                                    className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-[#7d0505] text-gray-300 hover:text-white transition-colors">
-                                    Delete
-                                </button>
+                {games.length === 0 ?
+                    <div className="flex flex-col items-center justify-center w-full py-16">
+                        <div className="text-center">
+                            <div className="mb-4">
+                                <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
                             </div>
+                            <h3 className="text-lg font-medium text-gray-300 mb-2">Data not found</h3>
+                            <p className="text-sm text-gray-500">No games have been added yet. Add your first game to get started!</p>
                         </div>
-                    </section>
+                    </div>
+                    : games.map(f => (
+                        <section
+                            key={f.id}
+                            className="w-[350px] h-[370px] rounded-md bg-white dark:bg-[#0c0f15] border border-gray-200 dark:border-[#1a2234]
+             overflow-hidden shadow-lg dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]
+             transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_6px_20px_rgba(0,0,0,0.45)]"
+                        >
+                            {/* Image */}
+                            <div className="w-full h-[180px] bg-gray-50 dark:bg-[#10141c] overflow-hidden">
+                                <img
+                                    src={f.image}
+                                    alt={f.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+                                />
+                            </div>
 
+                            {/* Info */}
+                            <div className="p-5 border-t border-gray-200 dark:border-[#151b28] transition-colors duration-300">
+                                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
+                                    {f.name}
+                                </h2>
+                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-snug line-clamp-2 transition-colors duration-300">
+                                    {f.description}
+                                </p>
+                            </div>
 
+                            {/* Footer */}
+                            <div className="flex justify-between items-center px-5 py-4 border-t border-gray-200 dark:border-[#151b28]">
+                                <span className="text-[13px] text-blue-600 dark:text-blue-400 tracking-wider transition-all duration-300 hover:text-blue-500 dark:hover:text-blue-300">
+                                    {f.genre}
+                                </span>
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => {
+                                            deleteGame(f.id);
+                                            toast("Deleted", { type: "error" });
+                                        }}
+                                        className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-red-600 dark:bg-[#7d0505] text-white
+                   hover:bg-red-700 dark:hover:bg-red-700 transition-all duration-300 hover:scale-[1.05] active:scale-95"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
 
-
-
-
-                    // <Card className="w-[200px] space-y-5 p-4" radius="lg">
-                    //     <Skeleton className="rounded-lg">
-                    //         <div className="h-24 rounded-lg bg-default-300" />
-                    //     </Skeleton>
-                    //     <div className="space-y-3">
-                    //         <Skeleton className="w-3/5 rounded-lg">
-                    //             <div className="h-3 w-3/5 rounded-lg bg-default-200" />
-                    //         </Skeleton>
-                    //         <Skeleton className="w-4/5 rounded-lg">
-                    //             <div className="h-3 w-4/5 rounded-lg bg-default-200" />
-                    //         </Skeleton>
-                    //         <Skeleton className="w-2/5 rounded-lg">
-                    //             <div className="h-3 w-2/5 rounded-lg bg-default-300" />
-                    //         </Skeleton>
-                    //     </div>
-                    // </Card>
-
-                ))}
+                    ))}
             </main>
         </div>
     )

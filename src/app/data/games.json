@@ -1,1 +1,135 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Elden Ring",
+    "genre": "Action, RPG, Open World",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+    "description": "Explore a vast, mysterious world filled with danger and secrets in this epic open-world RPG."
+  },
+  {
+    "id": 2,
+    "name": "Hollow Knight",
+    "genre": "Action, Adventure, Metroidvania",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg",
+    "description": "Descend into a beautiful, ruined kingdom and uncover its haunting mysteries."
+  },
+  {
+    "id": 3,
+    "name": "Celeste",
+    "genre": "Platformer, Indie, Adventure",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/504230/header.jpg",
+    "description": "Climb a mysterious mountain while overcoming your inner struggles."
+  },
+  {
+    "id": 4,
+    "name": "Stardew Valley",
+    "genre": "Simulation, RPG, Farming",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
+    "description": "Build a farm, grow crops, and create your dream rural life."
+  },
+  {
+    "id": 5,
+    "name": "Red Dead Redemption 2",
+    "genre": "Open World, Western, Adventure",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+    "description": "Live the fading days of the Wild West as outlaw Arthur Morgan."
+  },
+  {
+    "id": 6,
+    "name": "Sekiro: Shadows Die Twice",
+    "genre": "Action, Adventure, Souls-like",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg",
+    "description": "Battle through Sengoku-era Japan as a deadly shinobi on a quest for revenge."
+  },
+  {
+    "id": 7,
+    "name": "Dark Souls III",
+    "genre": "Action, RPG, Souls-like",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/374320/header.jpg",
+    "description": "Enter a decaying world filled with despair and brutal combat."
+  },
+  {
+    "id": 8,
+    "name": "God of War",
+    "genre": "Action, Adventure, Mythology",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
+    "description": "Join Kratos and Atreus on a mythic journey through the Norse realms."
+  },
+  {
+    "id": 9,
+    "name": "Ghost of Tsushima",
+    "genre": "Open World, Action, Adventure",
+    "image": "https://image.api.playstation.com/vulcan/ap/rnd/202009/1020/85f8aU8vflJm3wGslWom6Xv3.png",
+    "description": "Become the Ghost to defend your home from the Mongol invasion."
+  },
+  {
+    "id": 10,
+    "name": "Assassin's Creed Mirage",
+    "genre": "Stealth, Action, Adventure",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/368500/header.jpg",
+    "description": "Uncover the origins of the Hidden Ones in 9th-century Baghdad."
+  },
+  {
+    "id": 11,
+    "name": "Minecraft",
+    "genre": "Sandbox, Survival, Creative",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1672970/header.jpg",
+    "description": "Build, explore, and survive in a limitless block-based world."
+  },
+  {
+    "id": 12,
+    "name": "Terraria",
+    "genre": "Sandbox, Action, Adventure",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg",
+    "description": "Dig, fight, and build in a 2D world full of treasures and dangers."
+  },
+  {
+    "id": 13,
+    "name": "Baldur’s Gate 3",
+    "genre": "RPG, Strategy, Fantasy",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+    "description": "Shape your own story in a Dungeons & Dragons-based world of choice."
+  },
+  {
+    "id": 14,
+    "name": "Hades",
+    "genre": "Action, Roguelike, Indie",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1145360/header.jpg",
+    "description": "Defy the god of the dead in this fast-paced, story-rich roguelike."
+  },
+  {
+    "id": 15,
+    "name": "DOOM Eternal",
+    "genre": "Action, Shooter, FPS",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg",
+    "description": "Rip and tear through Hell’s armies in high-speed demon-slaying combat."
+  },
+  {
+    "id": 16,
+    "name": "Resident Evil 4 Remake",
+    "genre": "Horror, Action, Survival",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+    "description": "Reimagine classic horror with Leon’s rescue mission gone wrong."
+  },
+  {
+    "id": 17,
+    "name": "Death Stranding",
+    "genre": "Adventure, Sci-Fi, Exploration",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1190460/header.jpg",
+    "description": "Reconnect humanity across a fractured America as Sam Bridges."
+  },
+  {
+    "id": 18,
+    "name": "Cyberpunk 2077",
+    "genre": "RPG, Open World, Sci-Fi",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+    "description": "Live as V, a mercenary navigating a futuristic city of dreams and chaos."
+  },
+  {
+    "id": 19,
+    "name": "The Last of Us Part I",
+    "genre": "Action, Adventure, Drama",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg",
+    "description": "Survive a post-pandemic world as Joel and Ellie on a harrowing journey."
+  }
+]
