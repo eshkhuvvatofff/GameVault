@@ -36,11 +36,23 @@ export default function AddGame() {
     const [games, setGames] = useState([]);
     const [newGame, setNewGame] = useState({ name: "", genre: "" });
     useEffect(() => {
-        fetch("/api/games")
+        fetch("/api/games",)
             .then(res => res.json())
             .then(data => setGames(data));
     }, []);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch("/api/games")
+            const data = await res.json()
+            setGames(data)
+        }
+        fetchData()
+
+
+        const dataInterval = setInterval(fetchData, 2000)
+        return () => clearInterval(dataInterval)
+    }, [])
 
     async function addGame() {
 
@@ -238,9 +250,12 @@ export default function AddGame() {
                                 {f.genre}
                             </span>
                             <div className="flex gap-2">
-                                <button 
-                                onClick={deleteGame}
-                                className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-[#7d0505] text-gray-300 hover:text-white transition-colors">
+                                <button
+                                    onClick={() => {
+                                        deleteGame(f.id),
+                                        toast("success")
+                                    }}
+                                    className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-[#7d0505] text-gray-300 hover:text-white transition-colors">
                                     Delete
                                 </button>
                             </div>
