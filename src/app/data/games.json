@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Elden Ring",
-    "genre": "Open World Action RPG",
-    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-    "description": "A vast dark-fantasy world filled with ancient ruins, powerful bosses, and legendary exploration crafted by FromSoftware."
-  },
-  {
     "id": 2,
     "name": "Hollow Knight",
     "genre": "Action Adventure / Metroidvania",

@@ -30,7 +30,6 @@
 }
 
 
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -146,6 +145,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -153,7 +153,7 @@
 
 /* Minimal Neon Text Effects */
 .neon-text {
-  text-shadow: 
+  text-shadow:
     0 0 2px currentColor,
     0 0 4px currentColor,
     0 0 8px currentColor;
@@ -161,7 +161,7 @@
 }
 
 .neon-text:hover {
-  text-shadow: 
+  text-shadow:
     0 0 4px currentColor,
     0 0 8px currentColor,
     0 0 12px currentColor,
@@ -169,7 +169,7 @@
 }
 
 .neon-text-primary {
-  text-shadow: 
+  text-shadow:
     0 0 1px var(--primary),
     0 0 2px var(--primary),
     0 0 3px var(--primary);
@@ -178,14 +178,14 @@
 
 /* Subtle neon for accent text */
 .neon-text-accent {
-  text-shadow: 
+  text-shadow:
     0 0 1px currentColor,
     0 0 2px currentColor;
   transition: text-shadow 0.2s ease;
 }
 
 .neon-text-accent:hover {
-  text-shadow: 
+  text-shadow:
     0 0 1px currentColor,
     0 0 2px currentColor,
     0 0 4px currentColor;

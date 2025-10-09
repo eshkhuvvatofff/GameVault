@@ -44,7 +44,7 @@ const navigationLinks = [
 export default function Navbar() {
     return (
         <>
-            <header className="border-b px-4 md:px-6">
+            <header className="border-b px-4 md:px-6 mb-24">
                 <div className="flex h-16 w-full items-center justify-between px-16 fixed ">
                     {/* Left side */}
                     <div className="flex items-center gap-2">

@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 export default function Home() {
   const [games, setGames] = useState([]);
   const [newGame, setNewGame] = useState({ name: "", genre: "" });
+
   useEffect(() => {
     fetch("/api/games")
       .then(res => res.json())
@@ -20,11 +21,9 @@ export default function Home() {
   }, []);
 
   async function addGame() {
-
     if (!newGame.name.trim()) {
-      return toast.error("sry")
+      return toast.error("Please enter a game name");
     }
-
 
     const res = await fetch("/api/games", {
       method: "POST",
@@ -37,12 +36,14 @@ export default function Home() {
   }
 
   async function deleteGame(id) {
-    await fetch(`/api/games/${id}`, { method: "DELETE" });
-    setGames(prev => prev.filter(g => g.id !== id));
+    try {
+      await fetch(`/api/games/${id}`, { method: "DELETE" });
+      setGames(prev => prev.filter(g => g.id !== id));
+    } catch (error) {
+      console.error("Error deleting game:", error);
+      toast.error("Failed to delete game");
+    }
   }
-
-
-
 
   return (
     <>

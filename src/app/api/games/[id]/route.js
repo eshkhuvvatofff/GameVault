@@ -2,11 +2,11 @@ import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 
-const filePath = path.join(process.cwd(), "app/data/games.json");
+const filePath = path.join(process.cwd(), "src/app/data/games.json");
 
 
 export async function DELETE(req, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const data = await fs.readFile(filePath, "utf-8");
   let games = JSON.parse(data);
 
