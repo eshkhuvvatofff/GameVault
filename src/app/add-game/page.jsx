@@ -1,14 +1,17 @@
 "use client"
+
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@heroui/react";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@heroui/skeleton";
 import { useEffect, useState } from "react";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+// import {
+//     Card,
+//     CardContent,
+//     CardDescription,
+//     CardFooter,
+//     CardHeader,
+//     CardTitle,
+// } from "@/components/ui/card";
 import {
     Dialog,
     DialogClose,
@@ -19,11 +22,17 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "react-toastify";
 
 export default function AddGame() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const toggleLoad = () => {
+        setIsLoaded(!isLoaded);
+    };
+
+
     const [games, setGames] = useState([]);
     const [newGame, setNewGame] = useState({ name: "", genre: "" });
     useEffect(() => {
@@ -170,51 +179,95 @@ export default function AddGame() {
             </Dialog>
 
 
-            <main className="flex gap-4 justify-center flex-wrap">
+            <main className="flex gap-8 justify-center flex-wrap">
                 {games.map(f => (
 
-                    <Card
-                        key={f.id}
-                        className="w-full max-w-sm bg-[#0b0f19] border border-[#1a2234] rounded-2xl shadow-[0_0_15px_-5px_rgba(0,0,0,0.6)] overflow-hidden hover:shadow-lg transition-all duration-300"
-                    >
+                    // <Card key={f.id} className="w-full max-w-sm bg-[#0b0f19] border border-[#1a2234] rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                    //     <CardHeader className="px-5 py-4">
+                    //         <CardTitle className="text-base font-medium text-gray-100 tracking-wide">
+                    //             {f.name}
+                    //         </CardTitle>
+                    //         <CardDescription className="text-sm text-gray-400 mt-1 line-clamp-2">
+                    //             {f.description}
+                    //         </CardDescription>
+                    //     </CardHeader>
+
+                    //     <CardContent className="px-5 pb-3">
+                    //         <img
+                    //             src={f.image}
+                    //             alt={f.name}
+                    //             className="w-full cursor-pointer h-36 object-cover rounded-lg border border-[#1c2335] transition-transform duration-300 hover:scale-[1.02]"
+                    //         />
+                    //     </CardContent>
+
+                    //     <CardFooter className="flex justify-between items-center px-5 py-3 border-t border-[#1a2234]">
+                    //         <span className="text-xs text-gray-500">{f.genre}</span>
+                    //         <div className="flex gap-2">
+                    //             <Button onClick={() => deleteGame(f.id)} className="bg-[#7f0c03] cursor-pointer hover:bg-[#8b1e13] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200">
+                    //                 Delete
+                    //             </Button>
+                    //             <Button className="bg-[#1e2a48] cursor-pointer hover:bg-[#26345b] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200">
+                    //                 Download
+                    //             </Button>
+                    //         </div>
+                    //     </CardFooter>
+                    // </Card>
+
+
+                    <section key={f.id} className="w-[350px] h-[370px] rounded-md bg-[#0c0f15] border border-[#1a2234] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
                         {/* Image */}
-                        <div className="relative w-full h-48 overflow-hidden">
+                        <div className="w-full h-[180px] bg-[#10141c]">
                             <img
                                 src={f.image}
                                 alt={f.name}
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                className="w-full h-full object-cover"
                             />
                         </div>
 
-                        {/* Content */}
-                        <div className="px-5 py-4 flex flex-col gap-2">
-                            <h3 className="text-lg font-semibold text-gray-100 tracking-wide">
-                                {f.name}
-                            </h3>
-
-                            <p className="text-sm text-gray-400 line-clamp-3">
-                                {f.description || "No description available."}
+                        {/* Info */}
+                        <div className="p-5 border-t border-[#151b28]">
+                            <h2 className="text-lg font-semibold text-gray-100 mb-2">{f.name}</h2>
+                            <p className="text-sm text-gray-400 leading-snug line-clamp-2">
+                                {f.description}
                             </p>
                         </div>
 
                         {/* Footer */}
-                        <div className="flex items-center justify-between px-5 py-3 border-t border-[#1a2234]">
-                            <span className="text-xs text-gray-500 italic">{f.genre}</span>
-
+                        <div className="flex justify-between items-center px-5 py-4 border-t border-[#151b28]">
+                            <span className="text-[13px] text-blue-400  tracking-wider">
+                                {f.genre}
+                            </span>
                             <div className="flex gap-2">
-                                <Button
-                                    onClick={() => deleteGame(f.id)}
-                                    className="bg-[#7f0c03] hover:bg-[#8b1e13] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200 cursor-pointer"
-                                >
+                                <button 
+                                onClick={deleteGame}
+                                className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-[#7d0505] text-gray-300 hover:text-white transition-colors">
                                     Delete
-                                </Button>
-                                <Button className="bg-[#1e2a48] hover:bg-[#26345b] text-gray-100 text-sm font-medium px-4 py-1.5 rounded-md transition-colors duration-200 cursor-pointer">
-                                    Download
-                                </Button>
+                                </button>
                             </div>
                         </div>
-                    </Card>
+                    </section>
 
+
+
+
+
+
+                    // <Card className="w-[200px] space-y-5 p-4" radius="lg">
+                    //     <Skeleton className="rounded-lg">
+                    //         <div className="h-24 rounded-lg bg-default-300" />
+                    //     </Skeleton>
+                    //     <div className="space-y-3">
+                    //         <Skeleton className="w-3/5 rounded-lg">
+                    //             <div className="h-3 w-3/5 rounded-lg bg-default-200" />
+                    //         </Skeleton>
+                    //         <Skeleton className="w-4/5 rounded-lg">
+                    //             <div className="h-3 w-4/5 rounded-lg bg-default-200" />
+                    //         </Skeleton>
+                    //         <Skeleton className="w-2/5 rounded-lg">
+                    //             <div className="h-3 w-2/5 rounded-lg bg-default-300" />
+                    //         </Skeleton>
+                    //     </div>
+                    // </Card>
 
                 ))}
             </main>
