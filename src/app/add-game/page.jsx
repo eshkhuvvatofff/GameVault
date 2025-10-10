@@ -1,17 +1,9 @@
 "use client"
 
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@heroui/react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@heroui/skeleton";
+import { Card, Skeleton } from "@heroui/react";
 import { useEffect, useState } from "react";
-// import {
-//     Card,
-//     CardContent,
-//     CardDescription,
-//     CardFooter,
-//     CardHeader,
-//     CardTitle,
-// } from "@/components/ui/card";
+
 import {
     Dialog,
     DialogClose,
@@ -26,19 +18,14 @@ import { Label } from "@/components/ui/label"
 import { toast } from "react-toastify";
 
 export default function AddGame() {
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    const toggleLoad = () => {
-        setIsLoaded(!isLoaded);
-    };
-
-
+    const [loading, setLoading] = useState(true);
     const [games, setGames] = useState([]);
     const [newGame, setNewGame] = useState({ name: "", genre: "" });
     useEffect(() => {
-        fetch("/api/games",)
-            .then(res => res.json())
-            .then(data => setGames(data));
+        fetch("/api/games")
+            .then(r => r.json())
+            .then(d => setGames(d))
+            .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
@@ -192,24 +179,88 @@ export default function AddGame() {
 
 
             <main className="flex gap-8 justify-center flex-wrap">
-                {games.length === 0 ?
+                {/* AGAR LOADING HOLATI */}
+                {loading ? (
+                    // Skeleton placeholderlari (masalan 3 ta card ko‘rsatadi)
+                    Array.from({ length: 6 }).map((_, i) => (
+                        <Skeleton
+                            key={i}
+                            classNames={{
+                                base: "w-[350px] h-[370px] rounded-md bg-gray-200/40 dark:bg-[#1a2234]/40",
+                            }}
+                        >
+                            <section
+                                className="w-[350px] h-[370px] rounded-md bg-white dark:bg-[#0c0f15] border border-gray-200 dark:border-[#1a2234]
+             overflow-hidden shadow-lg dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
+                            >
+                                {/* Image skeleton */}
+                                <Skeleton className="w-full h-[180px] skeleton-shimmer">
+                                    <div className="w-full h-full bg-default-300" />
+                                </Skeleton>
+
+                                {/* Info skeleton */}
+                                <div className="p-5 border-t border-gray-200 dark:border-[#151b28] space-y-3">
+                                    <Skeleton className="h-5 w-2/3 rounded-lg skeleton-shimmer">
+                                        <div className="h-5 w-full rounded-lg bg-default-200" />
+                                    </Skeleton>
+                                    <Skeleton className="h-3 w-full rounded-lg skeleton-shimmer">
+                                        <div className="h-3 w-full rounded-lg bg-default-200" />
+                                    </Skeleton>
+                                    <Skeleton className="h-3 w-5/6 rounded-lg skeleton-shimmer">
+                                        <div className="h-3 w-full rounded-lg bg-default-200" />
+                                    </Skeleton>
+                                </div>
+
+                                {/* Footer skeleton */}
+                                <div className="flex justify-between items-center px-5 py-4 border-t border-gray-200 dark:border-[#151b28]">
+                                    <Skeleton className="h-4 w-20 rounded-full skeleton-shimmer">
+                                        <div className="h-4 w-full rounded-full bg-default-200" />
+                                    </Skeleton>
+                                    <div className="flex gap-2">
+                                        <Skeleton className="h-8 w-24 rounded-md skeleton-shimmer">
+                                            <div className="h-8 w-full rounded-md bg-default-300" />
+                                        </Skeleton>
+                                    </div>
+                                </div>
+                            </section>
+                        </Skeleton>
+
+                    ))
+                ) : games.length === 0 ? (
+                    // DATA NOT FOUND QISMI
                     <div className="flex flex-col items-center justify-center w-full py-16">
                         <div className="text-center">
                             <div className="mb-4">
-                                <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                <svg
+                                    className="mx-auto h-16 w-16 text-gray-400"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={1}
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                                    />
                                 </svg>
                             </div>
-                            <h3 className="text-lg font-medium text-gray-300 mb-2">Data not found</h3>
-                            <p className="text-sm text-gray-500">No games have been added yet. Add your first game to get started!</p>
+                            <h3 className="text-lg font-medium text-gray-300 mb-2">
+                                Data not found
+                            </h3>
+                            <p className="text-sm text-gray-500">
+                                No games have been added yet. Add your first game to get started!
+                            </p>
                         </div>
                     </div>
-                    : games.map(f => (
+                ) : (
+                    // ASL GAMES MAP QISMI
+                    games.map((f) => (
                         <section
                             key={f.id}
-                            className="w-[350px] h-[370px] rounded-md bg-white dark:bg-[#0c0f15] border border-gray-200 dark:border-[#1a2234]
-             overflow-hidden shadow-lg dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]
-             transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_6px_20px_rgba(0,0,0,0.45)]"
+                            className="w-[350px] h-[370px] rounded-md bg-white dark:bg-[#0c0f15] border  dark:border-[#1a2234]
+              overflow-hidden shadow-lg dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]
+              transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_6px_20px_rgba(0,0,0,0.45)]"
                         >
                             {/* Image */}
                             <div className="w-full h-[180px] bg-gray-50 dark:bg-[#10141c] overflow-hidden">
@@ -242,15 +293,15 @@ export default function AddGame() {
                                             toast("Deleted", { type: "error" });
                                         }}
                                         className="px-4 py-1.5 cursor-pointer text-[15px] rounded bg-red-600 dark:bg-[#7d0505] text-white
-                   hover:bg-red-700 dark:hover:bg-red-700 transition-all duration-300 hover:scale-[1.05] active:scale-95"
+                    hover:bg-red-700 dark:hover:bg-red-700 transition-all duration-300 hover:scale-[1.05] active:scale-95"
                                     >
                                         Delete
                                     </button>
                                 </div>
                             </div>
                         </section>
-
-                    ))}
+                    ))
+                )}
             </main>
         </div>
     )

@@ -7,13 +7,6 @@
     "description": "Explore a vast, mysterious world filled with danger and secrets in this epic open-world RPG."
   },
   {
-    "id": 2,
-    "name": "Hollow Knight",
-    "genre": "Action, Adventure, Metroidvania",
-    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg",
-    "description": "Descend into a beautiful, ruined kingdom and uncover its haunting mysteries."
-  },
-  {
     "id": 3,
     "name": "Celeste",
     "genre": "Platformer, Indie, Adventure",
@@ -131,5 +124,12 @@
     "genre": "Action, Adventure, Drama",
     "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg",
     "description": "Survive a post-pandemic world as Joel and Ellie on a harrowing journey."
+  },
+  {
+    "id": 20,
+    "name": "Horizon Forbidden West",
+    "genre": "Open World, Action, RPG",
+    "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1234560/header.jpg",
+    "description": "Explore distant lands and fight massive machines as Aloy in a lush, deadly world."
   }
 ]

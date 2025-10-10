@@ -105,6 +105,12 @@
   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
   --sidebar-border: oklch(0.928 0.006 264.531);
   --sidebar-ring: oklch(0.707 0.022 261.325);
+
+  /* Default surface tokens for skeletons */
+  --default-50: oklch(0.98 0 0);
+  --default-100: oklch(0.96 0 0);
+  --default-200: oklch(0.92 0 0);
+  --default-300: oklch(0.88 0 0);
 }
 
 .dark {
@@ -139,6 +145,14 @@
   --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Dark variants for default tokens */
+  --default-50: oklch(0.18 0 0);
+  --default-100: oklch(0.16 0 0);
+  --default-200: oklch(0.14 0 0);
+  --default-300: oklch(0.12 0 0);
+
+
 }
 
 @layer base {
@@ -189,4 +203,53 @@
     0 0 1px currentColor,
     0 0 2px currentColor,
     0 0 4px currentColor;
+}
+
+/* Default background utility classes (to mirror the ones you used in JSX) */
+.bg-default-50 {
+  background-color: var(--default-50);
+}
+
+.bg-default-100 {
+  background-color: var(--default-100);
+}
+
+.bg-default-200 {
+  background-color: var(--default-200);
+}
+
+.bg-default-300 {
+  background-color: var(--default-300);
+}
+
+/* Reusable skeleton shimmer effect */
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--default-50) 0%, transparent) 20%,
+      color-mix(in oklab, var(--default-300) 65%, white) 50%,
+      color-mix(in oklab, var(--default-50) 0%, transparent) 80%,
+      transparent 100%);
+  animation: skeleton-shimmer 3.5s infinite;
 }
